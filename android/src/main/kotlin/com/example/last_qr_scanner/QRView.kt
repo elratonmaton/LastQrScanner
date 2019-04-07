@@ -40,10 +40,6 @@ class QRView(context: Context, private val registrar: PluginRegistry.Registrar, 
                 object : BarcodeCallback {
                     override fun barcodeResult(result: BarcodeResult) {
                         channel.invokeMethod("onRecognizeQR",result.text)
-                        barcodeView.pause()
-                        Handler().postDelayed({
-                            barcodeView.resume()
-                        }, 1500)
                     }
                     override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
                 }
@@ -99,9 +95,15 @@ class QRView(context: Context, private val registrar: PluginRegistry.Registrar, 
             "checkAndRequestPermission" -> {
                 checkAndRequestPermission(result)
             }
-            "ToggleTorch" -> {
+            "toggleTorch" -> {
                 torchtogle = !torchtogle
                 barcodeView.setTorch(torchtogle)
+            }
+            "pauseScanner" -> {
+                barcodeView.pause()
+            }
+            "resumeScanner" -> {
+                barcodeView.resume()
             }
         }
     }

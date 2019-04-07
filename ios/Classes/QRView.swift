@@ -28,10 +28,6 @@ public class QRView:NSObject,FlutterPlatformView {
                         for code in codes {
                             let stringValue = code.stringValue!
                             self.channel.invokeMethod("onRecognizeQR", arguments: stringValue)
-                            self.scanner?.freezeCapture()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                self.scanner?.unfreezeCapture()
-                            }
                         }
                     }
                 })
@@ -50,8 +46,12 @@ public class QRView:NSObject,FlutterPlatformView {
                 case "setDimensions":
                     var arguments = call.arguments as! Dictionary<String, Double>
                     self?.setDimensions(width: arguments["width"] ?? 0,height: arguments["height"] ?? 0)
-                case "ToggleTorch":
+                case "toggleTorch":
                     self?.ToggleTorch()
+                case "pauseScanner":
+                    self?.pauseScanner()
+                case "resumeScanner":
+                    self?.resumeScanner()
                 default: result(FlutterMethodNotImplemented)
             }
             /*guard call.method == "setDimensions" else {
@@ -72,6 +72,14 @@ public class QRView:NSObject,FlutterPlatformView {
     
     func ToggleTorch() -> Void {
         self.scanner?.toggleTorch()
+    }
+    
+    func pauseScanner() -> Void {
+        self.scanner?.freezeCapture()
+    }
+    
+    func resumeScanner() -> Void {
+        self.scanner?.unfreezeCapture()
     }
     
 }
