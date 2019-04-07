@@ -6,7 +6,7 @@ PODS:
   - MTBBarcodeScanner (5.0.7)
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - last_qr_scanner (from `.symlinks/plugins/last_qr_scanner/ios`)
 
 SPEC REPOS:
@@ -15,7 +15,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   last_qr_scanner:
     :path: ".symlinks/plugins/last_qr_scanner/ios"
 

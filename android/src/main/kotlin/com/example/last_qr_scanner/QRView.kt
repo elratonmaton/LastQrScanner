@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import com.google.zxing.ResultPoint
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -39,6 +40,10 @@ class QRView(context: Context, private val registrar: PluginRegistry.Registrar, 
                 object : BarcodeCallback {
                     override fun barcodeResult(result: BarcodeResult) {
                         channel.invokeMethod("onRecognizeQR",result.text)
+                        barcodeView.pause()
+                        Handler().postDelayed({
+                            barcodeView.resume()
+                        }, 1500)
                     }
                     override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
                 }

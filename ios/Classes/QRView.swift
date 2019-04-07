@@ -28,6 +28,10 @@ public class QRView:NSObject,FlutterPlatformView {
                         for code in codes {
                             let stringValue = code.stringValue!
                             self.channel.invokeMethod("onRecognizeQR", arguments: stringValue)
+                            self.scanner?.freezeCapture()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                self.scanner?.unfreezeCapture()
+                            }
                         }
                     }
                 })
@@ -69,4 +73,5 @@ public class QRView:NSObject,FlutterPlatformView {
     func ToggleTorch() -> Void {
         self.scanner?.toggleTorch()
     }
+    
 }
