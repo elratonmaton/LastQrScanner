@@ -83,7 +83,15 @@ class QRViewController {
     }
   }
 
-  void ToggleTorch() {
-    channel.invokeMethod("ToggleTorch");
+  void toggleTorch() {
+    channel.invokeMethod("toggleTorch");
+  }
+
+  void pauseScanner() {
+    channel.invokeMethod("pauseScanner");
+  }
+
+  void resumeScanner() {
+    channel.invokeMethod("resumeScanner");
   }
 }

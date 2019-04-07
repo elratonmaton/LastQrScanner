@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
             Expanded(
               child: RaisedButton(
                 onPressed: () {
-                  this.controller.ToggleTorch();                  
+                  this.controller.toggleTorch();                  
                 },
                 child: Text("Toggle Torch"),
               ),
