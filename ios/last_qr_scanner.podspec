@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'last_qr_scanner'
-  s.version          = '0.0.1'
+  s.version          = '0.0.5'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
 A new flutter plugin project.
@@ -16,6 +16,7 @@ A new flutter plugin project.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.dependency 'MTBBarcodeScanner'
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
   s.ios.deployment_target = '8.0'
 end
