@@ -90,7 +90,7 @@ class QRView(context: Context, private val registrar: PluginRegistry.Registrar, 
     }
 
 
-    override fun onMethodCall(call: MethodCall?, result: MethodChannel.Result?) {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when(call?.method){
             "checkAndRequestPermission" -> {
                 checkAndRequestPermission(result)
